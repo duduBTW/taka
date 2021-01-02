@@ -8,16 +8,8 @@ import { useSpringCarousel } from "react-spring-carousel-js";
 import { Slide } from "react-full-page";
 import Card, { CardProps } from "./Card";
 
-export default function Row({
-  item,
-  setItem,
-  items,
-}: {
-  item: boolean;
-  setItem: (value: boolean) => void;
-  items: Array<CardProps>;
-}) {
-  const [active, setActive] = useState("1");
+export default function Row({ items }: { items: Array<CardProps> }) {
+  const [item, setItem] = useState(0);
 
   const {
     carouselFragment,
@@ -33,83 +25,32 @@ export default function Row({
         id: index.toString(),
         renderItem: (
           <Card
+            imageLink={itemDet.imageLink}
             price={itemDet.price}
             desc={itemDet.desc}
             title={itemDet.title}
-            item={item}
-            invert={!(index % 2 === 0)}
+            item={item === index}
+            index={index.toString()}
+            // invert={!(index % 2 === 0)}
           />
         ),
         renderThumb: (
           <ThumbItem
-            active={active === index.toString()}
+            active={item === index}
             onClick={() => {
               const id = index.toString();
-              setActive(id);
               if (!getIsActiveItem(id)) slideToItem(id);
             }}
           >
-            FULL BODY
+            {itemDet.title.toUpperCase()}
           </ThumbItem>
         ),
       };
     }),
-
-    // [
-    //   {
-    //     id: "1",
-
-    //     renderItem: (
-    //       <Card
-    //         price="200"
-    //         desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, ea voluptate animi, dolore repellat ullam quaerat voluptas quam adipisci mollitia nisi repudiandae in at maiores dicta vel laborum! Nesciunt reiciendis ipsum odit quod quam numquam necessitatibus delectus eius cumque sapiente."
-    //         title="Full Body"
-    //         item={item}
-    //       />
-    //     ),
-    //     renderThumb: (
-    //       <ThumbItem
-    //         active={active === "1"}
-    //         onClick={() => {
-    //           const id = "1";
-    //           setActive(id);
-    //           if (!getIsActiveItem(id)) slideToItem(id);
-    //         }}
-    //       >
-    //         FULL BODY
-    //       </ThumbItem>
-    //     ),
-    //   },
-    //   {
-    //     id: "2",
-    //     renderItem: (
-    //       <Card
-    //         price="100"
-    //         desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, ea voluptate animi, dolore repellat ullam quaerat voluptas quam adipisci mollitia nisi repudiandae in at maiores dicta vel laborum! Nesciunt reiciendis ipsum odit quod quam numquam necessitatibus delectus eius cumque sapiente."
-    //         title="Half Body"
-    //         item={item}
-    //         invert={true}
-    //       />
-    //     ),
-    //     renderThumb: (
-    //       <ThumbItem
-    //         active={active === "2"}
-    //         onClick={() => {
-    //           const id = "2";
-    //           setActive(id);
-    //           if (!getIsActiveItem(id)) slideToItem(id);
-    //         }}
-    //       >
-    //         HALF BODY
-    //       </ThumbItem>
-    //     ),
-    //   },
-    // ],
   });
 
   useListenToCustomEvent("onSlideStartChange", (data: any) => {
-    // set({ opacity: data.nextItem === 1 ? 1 : 0 });
-    setItem(!item);
+    setItem(data.nextItem);
   });
 
   return (
@@ -123,7 +64,6 @@ export default function Row({
           alignItems: "center",
         }}
       >
-        {" "}
         {thumbsFragment}{" "}
       </div>
     </div>

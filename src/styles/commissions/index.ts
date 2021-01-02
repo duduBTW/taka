@@ -1,6 +1,14 @@
 import styled from "styled-components";
 
 export const Content = styled.section`
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+
   color: white;
   width: 100%;
   height: 88vh;
@@ -26,21 +34,6 @@ export const Content = styled.section`
     /* flex-direction: column; */
     /* margin-left: 10vw; */
 
-    .image {
-      margin: 40px 0px;
-      flex-grow: 3;
-
-      @media (max-width: 1300px) {
-        /* transform: translateX(-20%); */
-      }
-
-      min-width: 300px;
-
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      background-image: url("https://pbs.twimg.com/media/Eqeg9R3VoAIQ0O2?format=jpg&name=large");
-    }
     .title {
       min-width: 100px;
       display: flex;
@@ -102,6 +95,29 @@ export const Content = styled.section`
       }
     }
   }
+`;
+
+interface ImagePorp {
+  link: string;
+}
+
+export const Image = styled.div`
+  margin: 40px 0px;
+  flex-grow: 3;
+
+  @media (max-width: 1300px) {
+    /* transform: translateX(-20%); */
+  }
+
+  min-width: 300px;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: white;
+  background-image: ${({ link }: ImagePorp) => `url(${link})`};
+
+  /* background-image: url("https://pbs.twimg.com/media/Eqeg9R3VoAIQ0O2?format=jpg&name=large"); */
 `;
 
 export const Header = styled.header`
@@ -192,8 +208,8 @@ export const ThumbItem = styled.div`
     background: grey;
   }
 
-  background: ${(props: ThumbItemPorp) => (!props.active ? "white" : "black")};
-  color: ${(props: ThumbItemPorp) => (!props.active ? "black" : "white")};
+  background: ${({ active }: ThumbItemPorp) => (!active ? "white" : "black")};
+  color: ${({ active }: ThumbItemPorp) => (!active ? "black" : "white")};
 `;
 
 export const Button = styled.button`

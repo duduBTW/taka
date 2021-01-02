@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { useSpring } from "react-spring";
 import { animated, config, Spring } from "react-spring/renderprops";
-import { Button, Content } from "../../styles/commissions";
+import { Button, Content, Image } from "../../styles/commissions";
 
 export interface CardProps {
   title: string;
   item?: boolean;
   price: string;
   desc: string;
-  invert?: boolean;
+  imageLink: string;
+  index?: string;
 }
 
 export default function Card({
@@ -16,7 +17,8 @@ export default function Card({
   price,
   desc,
   item,
-  invert = false,
+  imageLink,
+  index,
 }: CardProps) {
   useEffect(() => {}, []);
   return (
@@ -29,7 +31,7 @@ export default function Card({
             <Spring
               reset={item}
               delay={300}
-              reverse={item}
+              // reverse={!item}
               // force={invert ? item : !item}
               from={{
                 opacity: 0,
@@ -46,6 +48,7 @@ export default function Card({
                     ...props,
                   }}
                   className="body"
+                  id={index + "body"}
                 >
                   <div className="price">{price}</div>
                   <div className="desc">{desc}</div>
@@ -55,9 +58,37 @@ export default function Card({
                 </div>
               )}
             </Spring>
+            {/* <Spring
+              reset={item}
+              delay={100}
+              // reverse={!item}
+              // force={invert ? item : !item}
+              from={{
+                transform: "translateX(-50%)",
+              }}
+              to={{
+                transform: "translateX(10%)",
+              }}
+            >
+              {(props) => (
+                <div
+                  style={{
+                    ...props,
+                    background: "red",
+                    color: "red",
+                    top: 0,
+                    zIndex: 2,
+                    position: "absolute",
+                  }}
+                  className="body"
+                >
+                  aaaa
+                </div>
+              )}
+            </Spring> */}
           </div>
           <Spring
-            reset={invert ? item : !item}
+            reset={item}
             delay={250}
             config={config.stiff}
             from={{
@@ -69,7 +100,9 @@ export default function Card({
               transform: "scale(1) translateX(-20vw)",
             }}
           >
-            {(props) => <div style={props} className="image"></div>}
+            {(props) => (
+              <Image link={imageLink} style={props} className="image"></Image>
+            )}
           </Spring>
 
           <div className="title">
