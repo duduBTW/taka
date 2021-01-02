@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const Header = styled.div`
-  width: 80vw;
-  margin: 50px auto;
-  padding: 20px;
+  max-width: 100vw;
+  position: sticky;
+  top: 0px;
+  /* margin: 50px auto; */
+  padding: 10px;
   text-align: center;
   background: black;
 
@@ -13,7 +15,7 @@ export const Header = styled.div`
 `;
 
 export const Content = styled.div`
-  max-width: 80vw;
+  max-width: 100vw;
   margin: 0px auto;
 
   img {

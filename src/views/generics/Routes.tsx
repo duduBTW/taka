@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { RoutesContainer } from "../../styles/navBar";
+import { RoutesContainer } from "../../styles/layout";
 
 import routes from "./routesModel";
 

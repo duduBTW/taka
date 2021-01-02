@@ -55,6 +55,14 @@ export default function Row({ items }: { items: Array<CardProps> }) {
 
   return (
     <div>
+      <div
+        style={{
+          height: "5vh",
+          paddingLeft: "5vw",
+          display: "flex",
+          alignItems: "center",
+        }}
+      ></div>
       {carouselFragment}
       <div
         style={{

@@ -30,8 +30,9 @@ export default function Card({
           <div>
             <Spring
               reset={item}
-              delay={300}
+              delay={200}
               // reverse={!item}
+              immediate={false}
               // force={invert ? item : !item}
               from={{
                 opacity: 0,
@@ -58,34 +59,6 @@ export default function Card({
                 </div>
               )}
             </Spring>
-            {/* <Spring
-              reset={item}
-              delay={100}
-              // reverse={!item}
-              // force={invert ? item : !item}
-              from={{
-                transform: "translateX(-50%)",
-              }}
-              to={{
-                transform: "translateX(10%)",
-              }}
-            >
-              {(props) => (
-                <div
-                  style={{
-                    ...props,
-                    background: "red",
-                    color: "red",
-                    top: 0,
-                    zIndex: 2,
-                    position: "absolute",
-                  }}
-                  className="body"
-                >
-                  aaaa
-                </div>
-              )}
-            </Spring> */}
           </div>
           <Spring
             reset={item}

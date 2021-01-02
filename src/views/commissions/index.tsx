@@ -2,79 +2,81 @@ import React from "react";
 
 //@ts-ignore
 import { FullPage, Slide } from "react-full-page";
+import { Link } from "react-router-dom";
+import { Spring } from "react-spring/renderprops";
 import Row from "../../components/commission/Row";
+import { Header } from "../../styles/commissions";
 
-export default function Commissions() {
-  const list = [
-    [
-      {
-        title: "teste",
-        desc:
-          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
-        price: "100",
-        imageLink:
-          "https://pbs.twimg.com/media/Eqeg9R3VoAIQ0O2?format=jpg&name=large",
-      },
-      {
-        title: "teste dois",
-        desc:
-          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
-        price: "200",
-        imageLink:
-          "https://pbs.twimg.com/media/EquMT91UwAAzDNb?format=jpg&name=900x900",
-      },
-      {
-        title: "teste ababa",
-        desc:
-          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
-        price: "200",
-        imageLink:
-          "https://cdn.discordapp.com/attachments/353348612501012481/794377696611663893/yukipng2.png",
-      },
-    ],
-    [
-      {
-        title: "teste ababa",
-        desc:
-          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
-        price: "200",
-        imageLink:
-          "https://cdn.discordapp.com/attachments/353348612501012481/794377696611663893/yukipng2.png",
-      },
-    ],
-    [
-      {
-        title: "teste",
-        desc:
-          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
-        price: "100",
-        imageLink:
-          "https://pbs.twimg.com/media/Eqeg9R3VoAIQ0O2?format=jpg&name=large",
-      },
-      {
-        title: "teste dois",
-        desc:
-          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
-        price: "200",
-        imageLink:
-          "https://pbs.twimg.com/media/EquMT91UwAAzDNb?format=jpg&name=900x900",
-      },
-      {
-        title: "teste ababa",
-        desc:
-          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
-        price: "200",
-        imageLink:
-          "https://cdn.discordapp.com/attachments/353348612501012481/794377696611663893/yukipng2.png",
-      },
-    ],
-  ];
+const list = [
+  [
+    {
+      title: "teste",
+      desc:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
+      price: "100",
+      imageLink:
+        "https://pbs.twimg.com/media/Eqeg9R3VoAIQ0O2?format=jpg&name=large",
+    },
+    {
+      title: "teste dois",
+      desc:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
+      price: "200",
+      imageLink:
+        "https://pbs.twimg.com/media/EquMT91UwAAzDNb?format=jpg&name=900x900",
+    },
+    {
+      title: "teste ababa",
+      desc:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
+      price: "200",
+      imageLink:
+        "https://cdn.discordapp.com/attachments/353348612501012481/794377696611663893/yukipng2.png",
+    },
+  ],
+  [
+    {
+      title: "teste ababa",
+      desc:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
+      price: "200",
+      imageLink:
+        "https://cdn.discordapp.com/attachments/353348612501012481/794377696611663893/yukipng2.png",
+    },
+  ],
+  [
+    {
+      title: "teste",
+      desc:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
+      price: "100",
+      imageLink:
+        "https://pbs.twimg.com/media/Eqeg9R3VoAIQ0O2?format=jpg&name=large",
+    },
+    {
+      title: "teste dois",
+      desc:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
+      price: "200",
+      imageLink:
+        "https://pbs.twimg.com/media/EquMT91UwAAzDNb?format=jpg&name=900x900",
+    },
+    {
+      title: "teste ababa",
+      desc:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
+      price: "200",
+      imageLink:
+        "https://cdn.discordapp.com/attachments/353348612501012481/794377696611663893/yukipng2.png",
+    },
+  ],
+];
 
+const Commissions = () => {
   return (
     <FullPage>
       <Slide>
-        {/* <Spring
-          config={config.slow}
+        <Spring
           from={{ opacity: 0, transform: "translate3d(0px,-300px,0px)" }}
           to={{ opacity: 1, transform: "translate3d(0px,0px,0px)" }}
         >
@@ -95,7 +97,9 @@ export default function Commissions() {
                     Do One Now
                   </h2>
                 </div>
-                <button>Start</button>
+                <Link className="link" to="/commissions">
+                  Start
+                </Link>
               </div>
               <div className="card">
                 <img
@@ -106,7 +110,7 @@ export default function Commissions() {
               </div>
             </Header>
           )}
-        </Spring> */}
+        </Spring>
       </Slide>
       {list.map((listItem) => (
         <Slide>
@@ -115,4 +119,6 @@ export default function Commissions() {
       ))}
     </FullPage>
   );
-}
+};
+
+export default React.memo(Commissions);

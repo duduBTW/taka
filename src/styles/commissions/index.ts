@@ -1,17 +1,16 @@
 import styled from "styled-components";
 
 export const Content = styled.section`
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   color: white;
   width: 100%;
-  height: 88vh;
+  height: 78vh;
 
   display: flex;
   justify-content: center;
@@ -37,6 +36,7 @@ export const Content = styled.section`
     .title {
       min-width: 100px;
       display: flex;
+      text-align: center;
       align-items: center;
       justify-content: center;
 
@@ -68,7 +68,7 @@ export const Content = styled.section`
 
       .price {
         margin-top: 3vw;
-        font-size: clamp(3rem, 4vw, 4rem);
+        font-size: clamp(2.5rem, 3.5vw, 3.6rem);
 
         font-weight: 600;
         letter-spacing: 3px;
@@ -163,10 +163,12 @@ export const Header = styled.header`
       line-height: 35px;
     }
 
-    button {
+    .link {
+      text-align: center;
       text-transform: uppercase;
       padding: 20px;
       color: white;
+      text-decoration: none;
       background: black;
       margin: 20px 0px;
       border: none;
@@ -190,22 +192,34 @@ interface ThumbItemPorp {
 }
 
 export const ThumbItem = styled.div`
-  padding: 20px 40px;
+  padding: 15px 25px;
   margin: 20px 20px 20px 0px;
   color: white;
 
   cursor: pointer;
 
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 500;
 
   letter-spacing: 2px;
 
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
 
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+
+  transform: translateY(0px);
+  transition: all 0.4s;
   :hover {
     transition: all 0.4s;
-    background: grey;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.19), 0 5px 5px rgba(0, 0, 0, 0.23);
+    /* background: grey; */
+  }
+
+  :active {
+    transition: all 0.2s;
+    transform: translateY(2px);
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.19), 0 2px 2px rgba(0, 0, 0, 0.23);
   }
 
   background: ${({ active }: ThumbItemPorp) => (!active ? "white" : "black")};

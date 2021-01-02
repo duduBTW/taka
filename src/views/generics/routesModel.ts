@@ -1,6 +1,7 @@
 import React from "react";
-const Commissions = React.lazy(() => import("../commissions"));
-const Port = React.lazy(() => import("../portfolio"));
+import Home from "../home";
+import Commissions from "../commissions";
+import Port from "../portfolio";
 
 const routes = [
   {
@@ -15,6 +16,13 @@ const routes = [
     exact: true,
     name: "Portfolio",
     component: Port,
+    privateRoute: false,
+  },
+  {
+    path: "/home",
+    exact: true,
+    name: "Home",
+    component: Home,
     privateRoute: false,
   },
 ];
