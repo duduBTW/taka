@@ -35,7 +35,7 @@ const Row = ({
         id: index.toString(),
         renderItem: (
           <Card
-            imageLink={itemDet.imageLink}
+            images={itemDet.images}
             price={itemDet.price}
             desc={itemDet.desc}
             title={itemDet.title}

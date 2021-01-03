@@ -1,14 +1,18 @@
 import React, { useEffect } from "react";
-import { useSpring } from "react-spring";
-import { animated, config, Spring } from "react-spring/renderprops";
+import { config, Spring } from "react-spring/renderprops";
 import { Button, Content, Image } from "../../styles/commissions";
+import SimpleImageSlider from "react-simple-image-slider";
+
+export interface ImageProps {
+  url: string;
+}
 
 export interface CardProps {
   title: string;
   item?: boolean;
   price: string;
   desc: string;
-  imageLink: string;
+  images: Array<ImageProps>;
   index?: string;
 }
 
@@ -17,10 +21,9 @@ export default function Card({
   price,
   desc,
   item,
-  imageLink,
+  images,
   index,
 }: CardProps) {
-  useEffect(() => {}, []);
   return (
     <div
     // onClick={() => alert("a")}
@@ -74,7 +77,16 @@ export default function Card({
             }}
           >
             {(props) => (
-              <Image link={imageLink} style={props} className="image"></Image>
+              <Image style={props} className="image">
+                <SimpleImageSlider
+                  bgColor={"#f0f0f0"}
+                  showNavs={true}
+                  showBullets={true}
+                  width={"100%"}
+                  height={"100%"}
+                  images={images}
+                />
+              </Image>
             )}
           </Spring>
         </div>

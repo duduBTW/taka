@@ -1,17 +1,19 @@
 import styled from "styled-components";
 
 export const Title = styled.div`
-  min-width: 100px;
+  max-width: 100px;
   top: 0px;
   bottom: 0px;
   right: 0px;
   position: fixed;
   display: flex;
+  flex-direction: column;
+
   text-align: center;
   align-items: center;
   justify-content: center;
 
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(2rem, 2vw, 3rem);
 
   font-weight: bold;
 
@@ -19,7 +21,7 @@ export const Title = styled.div`
   width: 140px;
 
   color: white;
-  line-height: 80px;
+  line-height: 60px;
 
   z-index: 4;
 `;
@@ -107,10 +109,6 @@ export const Content = styled.section`
   }
 `;
 
-interface ImagePorp {
-  link: string;
-}
-
 export const Image = styled.div`
   margin: 20px 0px;
   flex-grow: 3;
@@ -119,15 +117,15 @@ export const Image = styled.div`
     /* transform: translateX(-20%); */
   }
 
-  min-width: 300px;
-  margin-right: 100px;
+  min-width: 350px;
+  max-width: 550px;
+  margin-right: 90px;
 
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  background-color: white;
-  background-image: ${({ link }: ImagePorp) => `url(${link})`};
-
+  div {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
   /* background-image: url("https://pbs.twimg.com/media/Eqeg9R3VoAIQ0O2?format=jpg&name=large"); */
 `;
 
@@ -203,7 +201,7 @@ interface ThumbItemPorp {
 }
 
 export const ThumbItem = styled.div`
-  padding: 15px 25px;
+  padding: 10px 25px;
   margin: 20px 20px 20px 0px;
   color: white;
 
@@ -214,16 +212,18 @@ export const ThumbItem = styled.div`
 
   letter-spacing: 2px;
 
-  border-radius: 4px;
+  /* border-radius: 4px; */
 
-  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+  border: 1px solid black;
+
+  /* box-shadow: 0 6px 6px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23); */
 
   transform: translateY(0px);
   transition: all 0.4s;
   :hover {
     transition: all 0.4s;
-    transform: translateY(-4px);
-    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.19), 0 5px 5px rgba(0, 0, 0, 0.23);
+    transform: translateY(-3px);
+    /* box-shadow: 0 10px 8px rgba(0, 0, 0, 0.19), 0 5px 5px rgba(0, 0, 0, 0.23); */
     /* background: grey; */
   }
 
@@ -233,7 +233,8 @@ export const ThumbItem = styled.div`
     box-shadow: 0 2px 1px rgba(0, 0, 0, 0.19), 0 2px 2px rgba(0, 0, 0, 0.23);
   }
 
-  background: ${({ active }: ThumbItemPorp) => (!active ? "white" : "black")};
+  background: ${({ active }: ThumbItemPorp) =>
+    !active ? "transparent" : "black"};
   color: ${({ active }: ThumbItemPorp) => (!active ? "black" : "white")};
 `;
 
@@ -242,7 +243,7 @@ export const Button = styled.button`
   padding: 20px 20px;
   color: black;
   background: none;
-  border: 4px solid green;
+  border: 3px solid green;
   margin: 20px 0px;
   cursor: pointer;
 
@@ -276,6 +277,6 @@ export const Button = styled.button`
     bottom: 0px;
     left: 0px;
     right: 0px;
-    transform: translate3D(8px, 8px, 0px) translateZ(-1px);
+    transform: translate3D(6px, 6px, 0px) translateZ(-1px);
   }
 `;
