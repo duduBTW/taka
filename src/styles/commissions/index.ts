@@ -129,33 +129,42 @@ export const Image = styled.div`
   /* background-image: url("https://pbs.twimg.com/media/Eqeg9R3VoAIQ0O2?format=jpg&name=large"); */
 `;
 
-export const Header = styled.header`
+export const HeaderStyle = styled.header`
   /* background: blue; */
   /* width: 100vw; */
   height: 100vh;
+  max-width: 100vw;
 
   display: flex;
   /* flex-direction: column; */
   align-items: center;
   justify-content: center;
 
-  padding-left: 40px;
-
   .main {
     /* margin: 0px 4vw; */
+    max-width: 100vw;
+    flex-grow: 3;
     flex-grow: 1;
     height: 100%;
 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    @media (max-width: 1300px) {
+      transform: translateX(5vw);
+    }
+
+    @media (max-width: 850px) {
+      transform: translateX(10vw);
+    }
+    z-index: 3;
     justify-content: space-evenly;
-    padding: 4vw;
+    /* padding: 4vw; */
     h1 {
       margin: 0px;
       padding: 0px;
 
-      font-size: clamp(1rem, 2.5vw, 4.5rem);
+      font-size: clamp(2rem, 3vw, 5rem);
       font-weight: 600;
       letter-spacing: 40px;
     }
@@ -188,11 +197,60 @@ export const Header = styled.header`
       letter-spacing: 10px;
     }
   }
+`;
 
-  .card {
-    flex-grow: 1;
-    text-align: center;
-    width: 100%;
+interface CardPorp {
+  image: string;
+}
+
+export const CardContainer = styled.div`
+  @media (max-width: 850px) {
+    display: none;
+  }
+
+  min-width: 10vw;
+  flex-grow: 1;
+  flex: 3;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+
+  .item {
+    height: 90vh;
+  }
+
+  .thmb {
+    height: 10vh;
+  }
+`;
+
+export const Card = styled.div`
+  height: 100%;
+  width: 100%;
+  background-image: ${({ image }: CardPorp) => `url("${image}");`};
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+
+  position: relative;
+
+  label {
+    color: white;
+    font-size: 1.6rem;
+    letter-spacing: 5px;
+
+    left: 20px;
+    right: 20px;
+    bottom: 10px;
+    height: 60px;
+
+    position: absolute;
+    background: black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 

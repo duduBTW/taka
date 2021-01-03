@@ -28,7 +28,7 @@ export const NavBarContainer = styled.div`
   width: 60px;
 
   @media (max-width: 1300px) {
-    width: 0px;
+    display: none;
   }
 
   background: black;

@@ -5,7 +5,7 @@ import { Header, Content, Image } from "../../styles/portfolio";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { useHistory } from "react-router-dom";
 import list from "../../data";
-function shuffle(array: portItemProps[]) {
+export function shuffle(array: any) {
   var currentIndex = array.length,
     temporaryValue,
     randomIndex;

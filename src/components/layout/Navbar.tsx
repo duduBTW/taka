@@ -47,20 +47,19 @@ export default function Navbar() {
   ];
 
   return (
-    <div>
-      <NavBarContainer>
-        <Title>
-          T <br />
-          A <br />
-          K <br />
-          A <br />
-        </Title>
-        <hr />
-        <Icons>
-          {listIcons.map((itemIcon) => (
-            <NavItem {...itemIcon} history={history} />
-          ))}
-          {/* <IconContext.Provider
+    <NavBarContainer>
+      <Title>
+        T <br />
+        A <br />
+        K <br />
+        A <br />
+      </Title>
+      <hr />
+      <Icons>
+        {listIcons.map((itemIcon) => (
+          <NavItem {...itemIcon} history={history} />
+        ))}
+        {/* <IconContext.Provider
             value={{
               color: "white",
               className: "global-class-name",
@@ -204,8 +203,7 @@ export default function Navbar() {
               </animated.div>
             </div>
           </IconContext.Provider> */}
-        </Icons>
-      </NavBarContainer>
-    </div>
+      </Icons>
+    </NavBarContainer>
   );
 }

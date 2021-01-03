@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 //@ts-ignore
 import { FullPage, Slide } from "react-full-page";
-import { Link } from "react-router-dom";
 import { config, Spring } from "react-spring/renderprops";
+import Header from "../../components/commission/Header";
 import Row from "../../components/commission/Row";
 import list from "../../data";
-import { Header, Title } from "../../styles/commissions";
+import { Title } from "../../styles/commissions";
 
 const Commissions = () => {
   const [line, setLine] = useState(0);
@@ -40,41 +40,7 @@ const Commissions = () => {
       beforeChange={(data: { to: number; from: number }) => setLine(data.to)}
     >
       <Slide>
-        <Spring
-          from={{ opacity: 0, transform: "translate3d(0px,-300px,0px)" }}
-          to={{ opacity: 1, transform: "translate3d(0px,0px,0px)" }}
-        >
-          {(props: any) => (
-            <Header style={props}>
-              <div className="main">
-                <div>
-                  <h1>
-                    TAKA
-                    <br />
-                    COMISSIONS
-                  </h1>
-                  <br />
-                  <br />
-                  <h2>
-                    Change Your Life
-                    <br />
-                    Do One Now
-                  </h2>
-                </div>
-                <Link className="link" to="/commissions">
-                  Start
-                </Link>
-              </div>
-              <div className="card">
-                <img
-                  width={300}
-                  src="https://pbs.twimg.com/media/EqekGYoVEAE8ZlN?format=jpg&name=large"
-                  alt=""
-                />
-              </div>
-            </Header>
-          )}
-        </Spring>
+        <Header />
       </Slide>
       {list.map((listItem, index) => (
         <Slide>
