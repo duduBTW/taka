@@ -6,7 +6,8 @@ import { useSpringCarousel } from "react-spring-carousel-js";
 
 //@ts-ignore
 import { Slide } from "react-full-page";
-import Card, { CardProps } from "./Card";
+import Card from "./Card";
+import { CardProps } from "../../data";
 
 const Row = ({
   items,
@@ -14,7 +15,7 @@ const Row = ({
   column,
   setColumn,
 }: {
-  items: Array<CardProps>;
+  items: CardProps;
   indexV: number;
   column: any;
   setColumn: (value: any) => void;
@@ -30,7 +31,7 @@ const Row = ({
   } = useSpringCarousel({
     withThumbs: true,
     initialActiveItem: 0,
-    items: items.map((itemDet, index) => {
+    items: items.content.map((itemDet, index) => {
       return {
         id: index.toString(),
         renderItem: (
@@ -71,12 +72,12 @@ const Row = ({
           height: "8vh",
           paddingLeft: "5vw",
           display: "flex",
-          fontSize: "1.4rem",
+          fontSize: "2rem",
           alignItems: "center",
           fontWeight: 600,
         }}
       >
-        Live 2D
+        {items.type}
       </div>
       {carouselFragment}
       <div

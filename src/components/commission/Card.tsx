@@ -2,19 +2,7 @@ import React, { useEffect } from "react";
 import { config, Spring } from "react-spring/renderprops";
 import { Button, Content, Image } from "../../styles/commissions";
 import SimpleImageSlider from "react-simple-image-slider";
-
-export interface ImageProps {
-  url: string;
-}
-
-export interface CardProps {
-  title: string;
-  item?: boolean;
-  price: string;
-  desc: string;
-  images: Array<ImageProps>;
-  index?: string;
-}
+import { CardItemProps } from "../../data";
 
 export default function Card({
   title,
@@ -23,7 +11,7 @@ export default function Card({
   item,
   images,
   index,
-}: CardProps) {
+}: CardItemProps) {
   return (
     <div
     // onClick={() => alert("a")}
@@ -79,6 +67,7 @@ export default function Card({
             {(props) => (
               <Image style={props} className="image">
                 <SimpleImageSlider
+                  navStyle={2}
                   bgColor={"#f0f0f0"}
                   showNavs={true}
                   showBullets={true}

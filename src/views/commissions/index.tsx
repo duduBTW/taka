@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { FullPage, Slide } from "react-full-page";
 import { Link } from "react-router-dom";
 import { config, Spring } from "react-spring/renderprops";
-import { CardProps } from "../../components/commission/Card";
 import Row from "../../components/commission/Row";
 import list from "../../data";
 import { Header, Title } from "../../styles/commissions";
@@ -27,7 +26,7 @@ const Commissions = () => {
       if (line > 0) {
         setTitle(
           // @ts-ignore
-          list[line - 1][column[line - 1]].title
+          list[line - 1].content[column[line - 1]].title
         );
       } else {
         setTitle("");
@@ -37,7 +36,7 @@ const Commissions = () => {
 
   return (
     <FullPage
-      initialSlide={1}
+      initialSlide={0}
       beforeChange={(data: { to: number; from: number }) => setLine(data.to)}
     >
       <Slide>

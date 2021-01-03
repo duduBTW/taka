@@ -123,8 +123,8 @@ export const Image = styled.div`
 
   div {
     background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+    background-size: cover !important;
+    background-position: top;
   }
   /* background-image: url("https://pbs.twimg.com/media/Eqeg9R3VoAIQ0O2?format=jpg&name=large"); */
 `;

@@ -17,15 +17,34 @@ import {
 import { animated, useSpring } from "react-spring";
 
 import { useHistory } from "react-router";
+import NavItem, { NavItemProps } from "./NavItem";
 
 export default function Navbar() {
-  const [{ y, color }, set] = useSpring(() => ({ y: 0, color: "#fff" }));
-  const [{ yComission }, setComission] = useSpring(() => ({
-    yComission: 0,
-  }));
+  // const [{ y, color }, set] = useSpring(() => ({ y: 0, color: "#fff" }));
+  // const [{ yComission }, setComission] = useSpring(() => ({
+  //   yComission: 0,
+  // }));
   const history = useHistory();
-
-  const size = 250;
+  const listIcons: Array<NavItemProps> = [
+    {
+      icon: <AiFillHome />,
+      size: 180,
+      label: "home",
+      link: "/",
+    },
+    {
+      icon: <AiOutlineFileImage />,
+      size: 200,
+      label: "portfolio",
+      link: "/portfolio",
+    },
+    {
+      icon: <AiFillSnippets />,
+      size: 240,
+      label: "commissions",
+      link: "/commissions",
+    },
+  ];
 
   return (
     <div>
@@ -38,7 +57,10 @@ export default function Navbar() {
         </Title>
         <hr />
         <Icons>
-          <IconContext.Provider
+          {listIcons.map((itemIcon) => (
+            <NavItem {...itemIcon} history={history} />
+          ))}
+          {/* <IconContext.Provider
             value={{
               color: "white",
               className: "global-class-name",
@@ -181,7 +203,7 @@ export default function Navbar() {
                 </div>
               </animated.div>
             </div>
-          </IconContext.Provider>
+          </IconContext.Provider> */}
         </Icons>
       </NavBarContainer>
     </div>

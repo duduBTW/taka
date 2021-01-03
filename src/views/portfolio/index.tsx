@@ -51,13 +51,12 @@ export default function Portfolio() {
     listTemp.pop();
 
     list.map((item) =>
-      item.map((row) =>
+      item.content.map((row) =>
         row.images.forEach((image) => {
-          console.log(image.url);
           if (image.url)
             listTemp.push({
               url: image.url,
-              type: row.price,
+              type: item.type,
               title: row.title,
             });
         })

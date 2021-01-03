@@ -25,7 +25,9 @@ export const Image = styled.div`
   img {
     display: block;
     width: 100%;
-    height: auto;
+    max-height: 90vh;
+    object-fit: cover;
+    object-position: top;
   }
 
   :hover {
@@ -47,6 +49,7 @@ export const Image = styled.div`
     right: 0;
     opacity: 0;
     transition: 0.4s ease;
+
     color: white;
     display: flex;
     align-items: center;
@@ -56,19 +59,19 @@ export const Image = styled.div`
     padding: 20px 0px;
 
     .title {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: bold;
     }
 
     .subtitle {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       margin-bottom: 20px;
-      font-weight: bold;
+      font-weight: normal;
     }
 
     .desc {
-      font-size: 1.01rem;
-      font-weight: bold;
+      font-size: 1rem;
+      font-weight: normal;
     }
   }
 `;
