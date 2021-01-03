@@ -68,12 +68,16 @@ const Row = ({
     <div>
       <div
         style={{
-          height: "5vh",
+          height: "8vh",
           paddingLeft: "5vw",
           display: "flex",
+          fontSize: "1.4rem",
           alignItems: "center",
+          fontWeight: 600,
         }}
-      ></div>
+      >
+        Live 2D
+      </div>
       {carouselFragment}
       <div
         style={{

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 //@ts-ignore
 import { FullPage, Slide } from "react-full-page";
 import { Link } from "react-router-dom";
-import { Spring } from "react-spring/renderprops";
+import { config, Spring } from "react-spring/renderprops";
 import Row from "../../components/commission/Row";
 import { Header, Title } from "../../styles/commissions";
 
@@ -170,16 +170,25 @@ const Commissions = () => {
         </Slide>
       ))}
       {titleLab && (
-        <Title>
-          {titleLab
-            .toUpperCase()
-            .split("")
-            .map((item) => (
-              <>
-                {item} <br />{" "}
-              </>
-            ))}
-        </Title>
+        <Spring
+          reset={true}
+          config={config.slow}
+          from={{ transform: "translate3d(100px,0px,0px)" }}
+          to={{ transform: "translate3d(0px,0px,0px)" }}
+        >
+          {(props: any) => (
+            <Title style={props}>
+              {titleLab
+                .toUpperCase()
+                .split("")
+                .map((item) => (
+                  <>
+                    {item} <br />{" "}
+                  </>
+                ))}
+            </Title>
+          )}
+        </Spring>
       )}
     </FullPage>
   );

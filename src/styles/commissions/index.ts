@@ -34,7 +34,7 @@ export const Content = styled.section`
 
   color: white;
   width: 100%;
-  height: 78vh;
+  height: 80vh;
 
   display: flex;
   justify-content: center;
