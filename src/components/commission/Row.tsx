@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Content, ThumbItem } from "../../styles/commissions";
+import { Button, Content, ThumbItem, Title } from "../../styles/commissions";
 
 import { Spring } from "react-spring/renderprops";
 import { useSpringCarousel } from "react-spring-carousel-js";
@@ -8,8 +8,18 @@ import { useSpringCarousel } from "react-spring-carousel-js";
 import { Slide } from "react-full-page";
 import Card, { CardProps } from "./Card";
 
-export default function Row({ items }: { items: Array<CardProps> }) {
-  const [item, setItem] = useState(0);
+const Row = ({
+  items,
+  indexV,
+  column,
+  setColumn,
+}: {
+  items: Array<CardProps>;
+  indexV: number;
+  column: any;
+  setColumn: (value: any) => void;
+}) => {
+  // const [item, setItem] = useState(0);
 
   const {
     carouselFragment,
@@ -29,14 +39,14 @@ export default function Row({ items }: { items: Array<CardProps> }) {
             price={itemDet.price}
             desc={itemDet.desc}
             title={itemDet.title}
-            item={item === index}
+            item={column && column[indexV] === index}
             index={index.toString()}
-            // invert={!(index % 2 === 0)}
           />
         ),
         renderThumb: (
           <ThumbItem
-            active={item === index}
+            // active={false}
+            active={column && column[indexV] === index}
             onClick={() => {
               const id = index.toString();
               if (!getIsActiveItem(id)) slideToItem(id);
@@ -50,7 +60,8 @@ export default function Row({ items }: { items: Array<CardProps> }) {
   });
 
   useListenToCustomEvent("onSlideStartChange", (data: any) => {
-    setItem(data.nextItem);
+    // setTitle(items[data.nextItem].title);
+    setColumn({ ...column, [indexV]: data.nextItem });
   });
 
   return (
@@ -76,4 +87,6 @@ export default function Row({ items }: { items: Array<CardProps> }) {
       </div>
     </div>
   );
-}
+};
+
+export default React.memo(Row);

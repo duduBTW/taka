@@ -1,5 +1,29 @@
 import styled from "styled-components";
 
+export const Title = styled.div`
+  min-width: 100px;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  position: fixed;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  font-size: clamp(2rem, 3vw, 3rem);
+
+  font-weight: bold;
+
+  background: black;
+  width: 140px;
+
+  color: white;
+  line-height: 80px;
+
+  z-index: 4;
+`;
+
 export const Content = styled.section`
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -17,6 +41,7 @@ export const Content = styled.section`
   align-items: center;
 
   .slide {
+    margin-right: 500px;
     height: 100%;
     width: 100%;
 
@@ -32,21 +57,6 @@ export const Content = styled.section`
     display: flex;
     /* flex-direction: column; */
     /* margin-left: 10vw; */
-
-    .title {
-      min-width: 100px;
-      display: flex;
-      text-align: center;
-      align-items: center;
-      justify-content: center;
-
-      font-size: clamp(2rem, 3vw, 3rem);
-
-      font-weight: bold;
-
-      background: black;
-      width: 140px;
-    }
 
     .body {
       flex-grow: 5;
@@ -102,7 +112,7 @@ interface ImagePorp {
 }
 
 export const Image = styled.div`
-  margin: 40px 0px;
+  margin: 20px 0px;
   flex-grow: 3;
 
   @media (max-width: 1300px) {
@@ -110,9 +120,10 @@ export const Image = styled.div`
   }
 
   min-width: 300px;
+  margin-right: 100px;
 
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-color: white;
   background-image: ${({ link }: ImagePorp) => `url(${link})`};

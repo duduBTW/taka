@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 //@ts-ignore
 import { FullPage, Slide } from "react-full-page";
 import { Link } from "react-router-dom";
 import { Spring } from "react-spring/renderprops";
 import Row from "../../components/commission/Row";
-import { Header } from "../../styles/commissions";
+import { Header, Title } from "../../styles/commissions";
 
 const list = [
   [
@@ -26,7 +26,7 @@ const list = [
         "https://pbs.twimg.com/media/EquMT91UwAAzDNb?format=jpg&name=900x900",
     },
     {
-      title: "teste ababa",
+      title: "teste nice",
       desc:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
       price: "200",
@@ -37,6 +37,14 @@ const list = [
   [
     {
       title: "teste ababa",
+      desc:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
+      price: "200",
+      imageLink:
+        "https://cdn.discordapp.com/attachments/353348612501012481/794377696611663893/yukipng2.png",
+    },
+    {
+      title: "teste 2",
       desc:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
       price: "200",
@@ -62,7 +70,7 @@ const list = [
         "https://pbs.twimg.com/media/EquMT91UwAAzDNb?format=jpg&name=900x900",
     },
     {
-      title: "teste ababa",
+      title: "pog",
       desc:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore expedita at praesentium itaque voluptas nulla minus commodi. Ducimus porro est numquam beatae molestiae natus optio voluptatibus expedita esse quisquam?",
       price: "200",
@@ -73,8 +81,46 @@ const list = [
 ];
 
 const Commissions = () => {
+  const [line, setLine] = useState(0);
+  const [column, setColumn] = useState(null);
+  const [titleLab, setTitle] = useState("");
+
+  // Consirar posição da coluna de todos os items
+  // React.useEffect(() => {
+  //   console.log("line: ", line - 1);
+  //   console.log("column: ", column);
+  //   if (line > 0) {
+  //     setTitle(list[line - 1][column].title);
+  //   } else {
+  //     setTitle("");
+  //   }
+  // }, [column, line]);
+  React.useEffect(() => {
+    if (!column) {
+      let columnPre: any = {};
+
+      for (let i = 0; i < list.length; i++) {
+        columnPre = { ...columnPre, [i]: 0 };
+      }
+
+      // alert(JSON.stringify(columnPre));
+      setColumn(columnPre);
+    } else {
+      if (line > 0) {
+        // @ts-ignore
+        setTitle(list[line - 1][column[line - 1]].title);
+      } else {
+        setTitle("");
+      }
+    }
+    // @ts-ignore
+    // alert(JSON.stringify(column[line - 1]));
+  }, [column, line]);
+
   return (
-    <FullPage>
+    <FullPage
+      beforeChange={(data: { to: number; from: number }) => setLine(data.to)}
+    >
       <Slide>
         <Spring
           from={{ opacity: 0, transform: "translate3d(0px,-300px,0px)" }}
@@ -112,11 +158,29 @@ const Commissions = () => {
           )}
         </Spring>
       </Slide>
-      {list.map((listItem) => (
+      {list.map((listItem, index) => (
         <Slide>
-          <Row items={listItem} />
+          <Row
+            column={column}
+            indexV={index}
+            setColumn={setColumn}
+            // title={index === 0 ? title : null}
+            items={listItem}
+          />
         </Slide>
       ))}
+      {titleLab && (
+        <Title>
+          {titleLab
+            .toUpperCase()
+            .split("")
+            .map((item) => (
+              <>
+                {item} <br />{" "}
+              </>
+            ))}
+        </Title>
+      )}
     </FullPage>
   );
 };

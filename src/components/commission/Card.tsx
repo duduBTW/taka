@@ -77,18 +77,6 @@ export default function Card({
               <Image link={imageLink} style={props} className="image"></Image>
             )}
           </Spring>
-
-          <div className="title">
-            {title &&
-              title
-                .toUpperCase()
-                .split("")
-                .map((item) => (
-                  <>
-                    {item} <br />{" "}
-                  </>
-                ))}
-          </div>
         </div>
       </Content>
     </div>
