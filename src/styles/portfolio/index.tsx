@@ -16,6 +16,24 @@ export const Header = styled.div`
   z-index: 3;
 `;
 
+export const Side = styled.div`
+  height: 100vh;
+  width: 80px;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  /* margin: 50px auto; */
+  padding: 10px;
+  text-align: center;
+  background: black;
+
+  color: white;
+  font-size: 1.8rem;
+  letter-spacing: 10px;
+
+  z-index: 3;
+`;
+
 export const Image = styled.div`
   position: relative;
   cursor: pointer;

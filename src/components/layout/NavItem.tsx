@@ -20,7 +20,7 @@ export default function NavItem({
   const [{ y }, set] = useSpring(() => ({ y: 0 }));
 
   return (
-    <div style={{ padding: "20px 0px", background: "black" }}>
+    <div style={{ padding: "20px 0px", background: "black", width: "100%" }}>
       <IconContext.Provider
         value={{
           color: "white",
@@ -65,9 +65,8 @@ export default function NavItem({
             <div
               style={{
                 color: "white",
-                zIndex: -1,
                 overflow: "hidden",
-                paddingRight: 20,
+                marginRight: 20,
                 fontSize: "1rem",
                 fontWeight: 400,
                 letterSpacing: 4,

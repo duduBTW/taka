@@ -23,3 +23,12 @@ code {
 .fp-slidesNav ul li a.active span {
   background-color: chartreuse;
 }
+.icon {
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+}
+
+.icon:hover {
+  background-color: rgba(255, 255, 255, 0.219);
+}

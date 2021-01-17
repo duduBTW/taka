@@ -69,7 +69,7 @@ export const Title = styled.div`
 `;
 
 export const RoutesContainer = styled.div`
-  margin-left: 15vw;
+  margin-left: 10vw;
 
   @media (max-width: 1300px) {
     margin-left: 0px;

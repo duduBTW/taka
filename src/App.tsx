@@ -1,29 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // import logo from './logo.svg';
 import { BrowserRouter, Switch } from "react-router-dom";
 import Routes from "./views/generics/Routes";
 
 import NavBar from "./components/layout/Navbar";
+import { CardItemProps } from "./data";
 
 const loading = () => <div>Carregando...</div>;
 
-function App() {
-  let stopTabFunction = function (e: any) {
-    if (e.keyCode == 9) {
-      e.preventDefault();
-    }
-  };
+export interface cardPropsContact {
+  twitter?: string;
+  discord?: string;
+  email?: string;
+}
 
-  useEffect(() => {
-    document.addEventListener("keydown", stopTabFunction);
-  });
+export interface cardProps {
+  quantity: number;
+  description: string;
+  info?: CardItemProps;
+}
+
+function App() {
+  const [orders, setOrders] = useState<Array<cardProps>>([]);
+  const [contactInfo, setContactInfo] = useState<cardPropsContact>({});
+
   return (
     <React.Suspense fallback={loading()}>
       <BrowserRouter>
+        {/* <Switch> */}
+        <Routes
+          orders={orders}
+          setOrders={setOrders}
+          contactInfo={contactInfo}
+          setContactInfo={setContactInfo}
+        />
+        {/* </Switch> */}
         <NavBar />
-        <Switch>
-          <Routes />
-        </Switch>
       </BrowserRouter>
     </React.Suspense>
   );

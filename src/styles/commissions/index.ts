@@ -1,5 +1,174 @@
 import styled from "styled-components";
 
+export const SectionContainer = styled.div`
+  width: 100%;
+
+  h1 {
+    color: black;
+    font-size: 1.4rem;
+    margin: 0px;
+
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
+
+    padding: 10px 0px;
+    width: 100%;
+    background: white;
+
+    position: sticky;
+    top: 0px;
+
+    z-index: 2;
+  }
+`;
+
+export const CardItem = styled.div`
+  width: 100%;
+  display: flex;
+  position: relative;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  height: 60vh;
+  transition: all 0.5s ease;
+
+  :hover {
+    .img {
+      transform: scale(1.21);
+    }
+  }
+
+  @media (max-width: 1300px) {
+    .hide {
+      display: none;
+    }
+  }
+
+  .img {
+    background-color: white;
+    flex: 3;
+    width: 40%;
+    margin: 50px 0px;
+  }
+
+  .left {
+    flex: 4;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .right {
+    flex: 2;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .info {
+    background: black;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    /* align-items: center; */
+    .title {
+      font-size: 3.5rem;
+      margin: 40px 0px;
+      text-transform: uppercase;
+      letter-spacing: 16px;
+      font-weight: bold;
+    }
+
+    .price {
+      font-size: 2.3rem;
+    }
+
+    ul {
+      padding: 0px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      li {
+        padding: 15px 0px;
+        width: 80%;
+        border-bottom: 1px solid #5a5a5a;
+        list-style: none;
+      }
+    }
+  }
+`;
+
+export const CardSection = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  ul {
+    max-height: 300px;
+    padding: 0px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    li {
+      padding: 15px 0px;
+      width: 80%;
+      border-bottom: 1px solid #5a5a5a;
+      list-style: none;
+    }
+  }
+`;
+
+export const ImageCard = styled.div`
+  background-image: ${({ image }: CardPorp) => `url("${image}");`};
+  background-size: contain;
+  background-position: center;
+  /* background-color: white; */
+  background-repeat: no-repeat;
+  z-index: -1;
+  transition: all 0.4s ease-in-out;
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`;
+export const Input = styled.input`
+  border: none;
+  /* border-bottom: 1px solid white; */
+  background: #1f1f1f;
+  padding: 5%;
+  color: white;
+
+  font-size: 10rem;
+
+  width: 90%;
+
+  outline: none;
+  text-align: center;
+`;
+
+export const TextArea = styled.textarea`
+  border: 1px solid white;
+  background: none;
+  color: white;
+
+  font-size: 1.5rem;
+  resize: vertical;
+  padding: 5%;
+  width: 90%;
+
+  outline: none;
+  text-align: start;
+`;
+
 export const Title = styled.div`
   max-width: 100px;
   top: 0px;
@@ -27,23 +196,15 @@ export const Title = styled.div`
 `;
 
 export const Content = styled.section`
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-
   color: white;
   width: 100%;
-  height: 80vh;
+  height: 100vh;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   .slide {
-    margin-right: 500px;
     height: 100%;
     width: 100%;
 
@@ -61,25 +222,24 @@ export const Content = styled.section`
     /* margin-left: 10vw; */
 
     .body {
+      max-height: 100vh;
       flex-grow: 5;
       background: black;
-      height: 100%;
       /* 
         @media (min-width: 1300px) {
           transform: translateX(0%);
         } */
 
-      z-index: -1;
       max-width: 800px;
 
-      padding: 50px 20% 50px 5vw;
+      padding: 5% 100px 0px 5vw;
 
       display: flex;
       align-items: flex-start;
       flex-direction: column;
 
       .price {
-        margin-top: 3vw;
+        /* margin-top: 3vw; */
         font-size: clamp(2.5rem, 3.5vw, 3.6rem);
 
         font-weight: 600;
@@ -94,7 +254,7 @@ export const Content = styled.section`
         }
 
         color: white;
-        margin-bottom: 4.5vw;
+        /* margin-bottom: 4.5vw; */
       }
 
       .desc {
@@ -102,7 +262,7 @@ export const Content = styled.section`
         color: white;
         max-height: 300px;
         overflow-y: hidden;
-        margin-bottom: 4.5vw;
+        margin: 1vw 0px;
         line-height: 33px;
       }
     }
@@ -111,14 +271,14 @@ export const Content = styled.section`
 
 export const Image = styled.div`
   margin: 20px 0px;
-  flex-grow: 3;
+  flex-grow: 5;
 
   @media (max-width: 1300px) {
     /* transform: translateX(-20%); */
   }
 
   min-width: 350px;
-  max-width: 550px;
+  max-width: 570px;
   margin-right: 90px;
 
   div {
@@ -337,4 +497,48 @@ export const Button = styled.button`
     right: 0px;
     transform: translate3D(6px, 6px, 0px) translateZ(-1px);
   }
+`;
+
+export const ButtonOutlined = styled.button`
+  text-transform: uppercase;
+  padding: 20px 20px;
+  color: white;
+  background: none;
+  border: none;
+  margin: 20px 0px;
+  cursor: pointer;
+
+  width: 100%;
+
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+
+  position: relative;
+  outline: none;
+
+  transition: transform 0.4s;
+  transform-style: preserve-3d;
+
+  :hover {
+    transition: all 0.4s;
+    /* border-color: white;
+
+    ::after {
+      transform: translate3D(0px, 0px, 0px);
+    } */
+  }
+
+  /* ::after {
+    position: absolute;
+    z-index: -10;
+    transition: transform 0.4s;
+    content: "";
+    background: white;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    transform: translate3D(6px, 6px, 0px) translateZ(-1px);
+  } */
 `;

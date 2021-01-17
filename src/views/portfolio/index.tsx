@@ -25,7 +25,7 @@ export function shuffle(array: any) {
   return array;
 }
 
-interface portItemProps {
+export interface portItemProps {
   type: string;
   title: string;
   url: string;
@@ -35,8 +35,8 @@ export default function Portfolio() {
   const history = useHistory();
   const [imageList, setImageList] = React.useState<portItemProps[] | null>();
 
-  const redirecCom = () => {
-    history.push("/commissions");
+  const redirecCom = (cat: string, title: string) => {
+    history.push(`/commissions/${cat}/${title}`);
   };
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function Portfolio() {
             listTemp.push({
               url: image.url,
               type: item.type,
-              title: row.title,
+              title: row.title ? row.title : "",
             });
         })
       )
@@ -80,7 +80,7 @@ export default function Portfolio() {
               ? imageList.map(
                   (item) =>
                     item && (
-                      <Image onClick={redirecCom}>
+                      <Image onClick={() => redirecCom(item.type, item.title)}>
                         <img src={item.url} alt="a" />
                         <div className="overlay">
                           <div className="title">{item.type}</div>

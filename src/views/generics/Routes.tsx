@@ -1,10 +1,21 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import { cardProps, cardPropsContact } from "../../App";
 import { RoutesContainer } from "../../styles/layout";
 
 import routes from "./routesModel";
 
-export default function Routes() {
+export default function Routes({
+  orders,
+  setOrders,
+  contactInfo,
+  setContactInfo,
+}: {
+  orders: Array<cardProps>;
+  setOrders: (value: cardProps[]) => void;
+  contactInfo: cardPropsContact;
+  setContactInfo: (value: cardPropsContact) => void;
+}) {
   return (
     <RoutesContainer>
       {routes.map((route, idx) => {
@@ -16,7 +27,14 @@ export default function Routes() {
               exact={route.exact}
               render={(props) => (
                 // @ts-ignore
-                <route.component {...props} />
+                <route.component
+                  // @ts-ignore
+                  setOrders={setOrders}
+                  orders={orders}
+                  contactInfo={contactInfo}
+                  setContactInfo={setContactInfo}
+                  {...props}
+                />
               )}
             />
           )

@@ -1,14 +1,18 @@
+import { features } from "process";
+
 export interface ImageProps {
   url: string;
 }
 
 export interface CardItemProps {
-  title: string;
+  title?: string;
+  id?: string;
   item?: boolean;
   price: string;
   desc: string;
   images: Array<ImageProps>;
   index?: string;
+  features?: string[];
 }
 
 export interface CardProps {
@@ -18,6 +22,7 @@ export interface CardProps {
 
 const list: Array<CardProps> = [
   {
+    // tipo
     type: "Art",
     content: [
       {
@@ -35,6 +40,7 @@ const list: Array<CardProps> = [
               "https://mir-s3-cdn-cf.behance.net/project_modules/1400/61cfff72846697.5e56089a39b38.png",
           },
         ],
+        features: ["full idk", "thing", "wow"],
       },
       {
         title: "teste dois",
@@ -48,9 +54,10 @@ const list: Array<CardProps> = [
           },
           {
             url:
-              "https://pbs.twimg.com/media/EquMT91UwAAzDNb?format=jpg&name=900x900",
+              "https://pbs.twimg.com/media/Eq5AnCuVEAIpiN2?format=jpg&name=medium",
           },
         ],
+        features: ["rowow", "papatutuwawa"],
       },
       {
         title: "teste nice",
