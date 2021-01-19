@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { config, Spring } from "react-spring/renderprops";
 import {
   Button,
@@ -15,14 +15,17 @@ import { CardItemProps } from "../../data";
 import { IconContext } from "react-icons/lib";
 import { FiArrowLeft } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
-import { features } from "process";
 
 export default function Card({
   content,
   finish,
 }: {
   content: CardItemProps;
-  finish: (quantity: number | string, description: string) => void;
+  finish: (
+    quantity: number | string,
+    description: string,
+    afther: string
+  ) => void;
 }) {
   const { price, desc, images, features } = content;
   const [reset, setReset] = React.useState(true);
@@ -159,14 +162,14 @@ export default function Card({
             <ButtonsContainer>
               <ButtonOutlined
                 style={{ flex: 1 }}
-                onClick={() => history.push("/commissions")}
+                onClick={() => finish(quantity, description, "/commissions")}
                 className="button"
               >
                 go back to commisions
               </ButtonOutlined>
               <Button
                 style={{ flex: 1 }}
-                onClick={() => finish(quantity, description)}
+                onClick={() => finish(quantity, description, "/cart")}
                 className="button"
               >
                 see my card

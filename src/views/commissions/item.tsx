@@ -1,5 +1,4 @@
 import React from "react";
-import { IconContext } from "react-icons/lib";
 import { useHistory, useParams } from "react-router-dom";
 import { config, Spring } from "react-spring/renderprops";
 import { cardProps } from "../../App";
@@ -20,7 +19,11 @@ export default function ComItem({
     .find((item1) => item1.type === cat)
     ?.content.find((item2) => item2.title === title);
 
-  const finish = (quantity: number | string, description: string) => {
+  const finish = (
+    quantity: number | string,
+    description: string,
+    afther: string
+  ) => {
     setOrders([
       ...orders,
       {
@@ -29,7 +32,7 @@ export default function ComItem({
         info: item,
       },
     ]);
-    history.push("/cart");
+    history.push(afther);
   };
 
   return (

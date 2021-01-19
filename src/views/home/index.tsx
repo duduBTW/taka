@@ -3,9 +3,6 @@ import React from "react";
 import Header from "../../components/commission/Header";
 import {
   TwitchEmbed,
-  TwitchChat,
-  TwitchClip,
-  TwitchPlayer,
   //@ts-ignore
 } from "react-twitch-embed";
 

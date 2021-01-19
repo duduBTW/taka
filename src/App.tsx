@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import logo from './logo.svg';
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Routes from "./views/generics/Routes";
 
 import NavBar from "./components/layout/Navbar";
@@ -20,9 +20,22 @@ export interface cardProps {
   info?: CardItemProps;
 }
 
+function getdefData() {
+  var data = localStorage.getItem("orders");
+  if (data) {
+    return JSON.parse(data);
+  } else {
+    return [];
+  }
+}
+
 function App() {
-  const [orders, setOrders] = useState<Array<cardProps>>([]);
+  const [orders, setOrders] = useState<Array<cardProps>>(getdefData());
   const [contactInfo, setContactInfo] = useState<cardPropsContact>({});
+
+  useEffect(() => {
+    localStorage.setItem("orders", JSON.stringify(orders));
+  }, [orders]);
 
   return (
     <React.Suspense fallback={loading()}>

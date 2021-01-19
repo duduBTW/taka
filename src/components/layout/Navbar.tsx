@@ -6,15 +6,8 @@ import {
   AiFillShopping,
   AiFillSnippets,
 } from "react-icons/ai";
-import { IconContext } from "react-icons";
 
-import {
-  NavBarContainer,
-  Title,
-  Icons,
-  NavLinkStyled,
-} from "../../styles/layout";
-import { animated, useSpring } from "react-spring";
+import { NavBarContainer, Title, Icons } from "../../styles/layout";
 
 import { useHistory } from "react-router";
 import NavItem, { NavItemProps } from "./NavItem";
@@ -62,8 +55,8 @@ export default function Navbar() {
       </Title>
       <hr />
       <Icons>
-        {listIcons.map((itemIcon) => (
-          <NavItem {...itemIcon} history={history} />
+        {listIcons.map((itemIcon, index) => (
+          <NavItem key={index} {...itemIcon} history={history} />
         ))}
       </Icons>
     </NavBarContainer>

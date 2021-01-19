@@ -7,8 +7,8 @@ const Commissions = () => {
   return (
     <div>
       {/* <Header /> */}
-      {list.map((listItem) => (
-        <Section content={listItem} />
+      {list.map((listItem, index) => (
+        <Section key={index} content={listItem} />
       ))}
     </div>
   );

@@ -73,14 +73,14 @@ export const CardItem = styled.div`
     /* align-items: center; */
     .title {
       font-size: 3.5rem;
-      margin: 40px 0px;
+      margin: 0px;
       text-transform: uppercase;
       letter-spacing: 16px;
       font-weight: bold;
     }
 
     .price {
-      font-size: 2.3rem;
+      font-size: 2.4rem;
     }
 
     ul {

@@ -7,8 +7,8 @@ export default function Section({ content }: { content: CardProps }) {
   return (
     <SectionContainer>
       <h1>{content.type}</h1>
-      {content.content.map((item) => (
-        <SectionCard cat={content.type} item={item} />
+      {content.content.map((item, index) => (
+        <SectionCard key={index} cat={content.type} item={item} />
       ))}
     </SectionContainer>
   );
