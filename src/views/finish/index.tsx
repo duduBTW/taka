@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { cardProps, cardPropsContact } from "../../App";
+import { Button } from "../../styles/commissions";
+import { ContactContainer } from "../../styles/contact";
 
 export default function Finish({
   orders,
@@ -30,17 +32,23 @@ export default function Finish({
     }
   }, [contactInfo, history, setOrders]);
   return (
-    <div>
-      <br />
-      <br />
-      <br />
+    <ContactContainer>
       {loading ? (
-        <h1>Carregabdo</h1>
+        <h1>Placing order...</h1>
       ) : (
-        <div>
-          <h1>Enviada com sucesso</h1>
-        </div>
+        <>
+          <h1>Order placed, we will enter in contact with you.</h1>
+
+          <Button
+            style={{ width: 700 }}
+            onClick={() => {
+              history.push("/");
+            }}
+          >
+            Home
+          </Button>
+        </>
       )}
-    </div>
+    </ContactContainer>
   );
 }

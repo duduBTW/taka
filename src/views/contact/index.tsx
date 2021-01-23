@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { cardProps, cardPropsContact } from "../../App";
 import { Button } from "../../styles/commissions";
-import { Input, Label } from "../../styles/contact";
+import { ContactContainer, Form, Input, Label } from "../../styles/contact";
 
 export default function Contact({
   contactInfo,
@@ -14,7 +14,6 @@ export default function Contact({
   const [discord, setDiscord] = useState("");
   const [twitter, setTwitter] = useState("");
   const [email, setEmail] = useState("");
-
   const changeDiscord = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDiscord(e.target.value);
   };
@@ -26,50 +25,47 @@ export default function Contact({
   };
 
   const history = useHistory();
+
   return (
-    <div style={{ background: "black", padding: "30px 60px" }}>
-      <h1
-        style={{ color: "white", margin: 0, paddingBottom: 35, marginLeft: 45 }}
-      >
-        How can I contact you?{" "}
-        <span
-          style={{ fontSize: "1rem", fontWeight: "normal", marginLeft: 10 }}
-        >
-          ( Please inform at least one field )
-        </span>
-      </h1>
-      <Label>Discord</Label>
-      <Input
-        defaultValue={contactInfo.discord}
-        onChange={changeDiscord}
-        value={discord}
-        placeholder="teste#1222"
-        type="text"
-        name="discord"
-      />
+    <ContactContainer>
+      <div>
+        <h1>How can I contact you? </h1>
+        <span>( Please inform at least one field )</span>
+      </div>
+      <Form>
+        <Label>Discord</Label>
+        <Input
+          defaultValue={contactInfo.discord}
+          onChange={changeDiscord}
+          value={discord}
+          placeholder="teste#1222"
+          type="text"
+          name="discord"
+        />
 
-      <Label>Twitter</Label>
-      <Input
-        defaultValue={contactInfo.twitter}
-        onChange={changeTwitter}
-        value={twitter}
-        placeholder="teste"
-        type="text"
-        name="twitter"
-      />
+        <Label>Twitter</Label>
+        <Input
+          defaultValue={contactInfo.twitter}
+          onChange={changeTwitter}
+          value={twitter}
+          placeholder="teste"
+          type="text"
+          name="twitter"
+        />
 
-      <Label>Email</Label>
-      <Input
-        defaultValue={contactInfo.email}
-        onChange={changeEmail}
-        value={email}
-        placeholder="example@email.com"
-        type="email"
-        name="email"
-      />
-      <br />
-      <br />
+        <Label>Email</Label>
+        <Input
+          defaultValue={contactInfo.email}
+          onChange={changeEmail}
+          value={email}
+          placeholder="example@email.com"
+          type="email"
+          name="email"
+        />
+      </Form>
+
       <Button
+        style={{ width: 700 }}
         onClick={() => {
           setContactInfo({
             email,
@@ -79,10 +75,9 @@ export default function Contact({
 
           history.push("/finish");
         }}
-        style={{ width: "85%" }}
       >
-        Continue
+        Finish
       </Button>
-    </div>
+    </ContactContainer>
   );
 }
